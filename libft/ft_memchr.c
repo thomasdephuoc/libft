@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tde-phuo <tde-phuo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/07 16:58:38 by tde-phuo          #+#    #+#             */
-/*   Updated: 2019/11/07 18:48:37 by tde-phuo         ###   ########.fr       */
+/*   Created: 2019/11/07 18:51:16 by tde-phuo          #+#    #+#             */
+/*   Updated: 2019/11/07 19:00:58 by tde-phuo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft.h"
 
-void	*ft_memcpy(void *restrict dst, const void *restrict src, size_t n)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
 	size_t			i;
-	unsigned char	*ptr_1;
-	unsigned char	*ptr_2;
+	unsigned char	*ptr;
 
-	if (dst == NULL && src == NULL)
-		return (dst);
-	ptr_1 = (unsigned char*)dst;
-	ptr_2 = (unsigned char *)src;
 	i = 0;
-	while (i < n)
+	ptr = (unsigned char*)s;
+	while (ptr[i] != '\0' && i < n)
 	{
-		*(ptr_1 + i) = *(ptr_2 + i);
+		if (ptr[i] == (unsigned char)c)
+			return ((unsigned char*)(ptr + i));
 		i++;
 	}
-	return (dst);
+	return (NULL);
 }

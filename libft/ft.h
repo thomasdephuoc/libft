@@ -6,7 +6,7 @@
 /*   By: tde-phuo <tde-phuo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 14:20:10 by tde-phuo          #+#    #+#             */
-/*   Updated: 2019/11/07 17:10:40 by tde-phuo         ###   ########.fr       */
+/*   Updated: 2019/11/07 18:51:52 by tde-phuo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ void	*ft_memset(void *b, int c, size_t len);
 void	ft_bzero(void *s, size_t n);
 void	*ft_memcpy(void *restrict dst, const void *restrict src, size_t n);
 void	*ft_memccpy(void *restrict dst, const void *restrict src, int c, size_t n);
+void	*ft_memmove(void *dst, const void *src, size_t len);
+void	*ft_memchr(const void *s, int c, size_t n);
 size_t	ft_strlen(const char *s);
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
