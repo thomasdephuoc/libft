@@ -1,0 +1,21 @@
+NAME = a.out
+CC = gcc
+CFLAG = -Wall -Wextra -Werror
+FFLAG = -g -fsanitize=address
+FILE = ft_atoi.c test.c
+
+all  : $(NAME)
+
+$(NAME) : $(FILE)
+	$(CC) $(CFLAG) $(FILE)
+
+fflag :
+	$(CC) $(FFLAG) $(CFLAG) $(FILE)
+
+clean :
+	rm $(NAME)
+
+fclean : clean
+	rm -rf a.out.dSYM
+
+re : fclean all
