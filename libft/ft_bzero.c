@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tde-phuo <tde-phuo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/06 16:11:54 by tde-phuo          #+#    #+#             */
-/*   Updated: 2019/11/07 16:42:33 by tde-phuo         ###   ########.fr       */
+/*   Created: 2019/11/07 16:45:47 by tde-phuo          #+#    #+#             */
+/*   Updated: 2019/11/07 16:58:08 by tde-phuo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft.h"
 
-void	*ft_calloc(size_t count, size_t size)
+void	ft_bzero(void *s, size_t n)
 {
-	void	*ptr;
-	size_t	i;
+	size_t			i;
+	unsigned char	*ptr;
 
+	ptr = (unsigned char*)s;
 	i = 0;
-	if (!(ptr = malloc(count * size)))
-		return (NULL);
-	while (i <= count)
+	while (i < n)
 	{
-		((char *)ptr)[i] = 0;
+		*(ptr + i) = 0;
 		i++;
 	}
-	return (ptr);
 }

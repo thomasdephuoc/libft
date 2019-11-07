@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tde-phuo <tde-phuo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/06 16:11:54 by tde-phuo          #+#    #+#             */
-/*   Updated: 2019/11/07 16:42:33 by tde-phuo         ###   ########.fr       */
+/*   Created: 2019/11/07 16:58:38 by tde-phuo          #+#    #+#             */
+/*   Updated: 2019/11/07 17:08:05 by tde-phuo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft.h"
 
-void	*ft_calloc(size_t count, size_t size)
+void	*ft_memcpy(void *restrict dst, const void *restrict src, size_t n)
 {
-	void	*ptr;
-	size_t	i;
+	size_t			i;
+	unsigned char	*ptr_1;
+	unsigned char	*ptr_2;
 
+	if (dst == NULL && src == NULL)
+		return(dst);
+	ptr_1 = (unsigned char*)dst;
+	ptr_2 = (unsigned char *)src;
 	i = 0;
-	if (!(ptr = malloc(count * size)))
-		return (NULL);
-	while (i <= count)
+	while (i < n)
 	{
-		((char *)ptr)[i] = 0;
+		*(ptr_1 + i) = *(ptr_2 + i);
 		i++;
 	}
-	return (ptr);
+	return (dst);
 }
