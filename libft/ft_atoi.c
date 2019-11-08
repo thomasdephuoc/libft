@@ -6,11 +6,11 @@
 /*   By: tde-phuo <tde-phuo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 14:53:00 by tde-phuo          #+#    #+#             */
-/*   Updated: 2019/11/07 16:00:32 by tde-phuo         ###   ########.fr       */
+/*   Updated: 2019/11/08 11:19:17 by tde-phuo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft.h"
+#include "libft.h"
 
 int	is_space(char c)
 {

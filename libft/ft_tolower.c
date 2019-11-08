@@ -6,11 +6,11 @@
 /*   By: tde-phuo <tde-phuo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 10:47:01 by tde-phuo          #+#    #+#             */
-/*   Updated: 2019/11/05 10:52:51 by tde-phuo         ###   ########.fr       */
+/*   Updated: 2019/11/08 11:22:11 by tde-phuo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft.h"
+#include "libft.h"
 
 int	ft_tolower(int c)
 {

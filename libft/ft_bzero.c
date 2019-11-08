@@ -6,11 +6,11 @@
 /*   By: tde-phuo <tde-phuo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 16:45:47 by tde-phuo          #+#    #+#             */
-/*   Updated: 2019/11/07 16:58:08 by tde-phuo         ###   ########.fr       */
+/*   Updated: 2019/11/08 11:19:25 by tde-phuo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft.h"
+#include "libft.h"
 
 void	ft_bzero(void *s, size_t n)
 {

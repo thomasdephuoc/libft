@@ -6,11 +6,11 @@
 /*   By: tde-phuo <tde-phuo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 17:51:42 by tde-phuo          #+#    #+#             */
-/*   Updated: 2019/11/07 18:48:18 by tde-phuo         ###   ########.fr       */
+/*   Updated: 2019/11/08 11:20:58 by tde-phuo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft.h"
+#include "libft.h"
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {

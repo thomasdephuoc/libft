@@ -6,11 +6,11 @@
 /*   By: tde-phuo <tde-phuo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 09:22:10 by tde-phuo          #+#    #+#             */
-/*   Updated: 2019/11/05 10:53:46 by tde-phuo         ###   ########.fr       */
+/*   Updated: 2019/11/08 11:22:17 by tde-phuo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft.h"
+#include "libft.h"
 
 int	ft_toupper(int c)
 {

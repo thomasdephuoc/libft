@@ -4,6 +4,7 @@ SRCS		 =	ft_memset.c\
 				ft_memccpy.c\
 				ft_memmove.c\
 				ft_memchr.c\
+				ft_memcmp.c\
 				ft_calloc.c\
 				ft_isprint.c\
 				ft_strdup.c\
@@ -21,7 +22,7 @@ SRCS		 =	ft_memset.c\
 				ft_isdigit.c\
 				ft_strchr.c\
 				ft_strlen.c\
-				test.c\
+				ft_substr.c\
 
 
 
@@ -37,8 +38,8 @@ CFLAGS		= -Wall -Wextra -Werror
 			cc ${CFLAGS} -c $< -o ${<:.c=.o}
 
 
-${NAME}:	${}
-			ar rcs ${NAME} ${OBJS}
+${NAME}:	${OBJS}
+			ar rc ${NAME} ${OBJS}
 
 all:		${NAME}
 
@@ -51,6 +52,6 @@ fclean:		clean
 re:			fclean all
 
 bonus:		${OBJS} ${OBJB}
-			ar rcs ${NAME} ${OBJS} ${OBJB}
+			ar rc ${NAME} ${OBJS} ${OBJB}
 
 .PHONY:		clean fclean all re

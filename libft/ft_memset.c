@@ -6,11 +6,11 @@
 /*   By: tde-phuo <tde-phuo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 16:25:25 by tde-phuo          #+#    #+#             */
-/*   Updated: 2019/11/07 16:42:18 by tde-phuo         ###   ########.fr       */
+/*   Updated: 2019/11/08 11:21:04 by tde-phuo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft.h"
+#include "libft.h"
 
 void	*ft_memset(void *b, int c, size_t len)
 {

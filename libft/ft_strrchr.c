@@ -6,11 +6,11 @@
 /*   By: tde-phuo <tde-phuo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 12:47:25 by tde-phuo          #+#    #+#             */
-/*   Updated: 2019/11/07 14:50:34 by tde-phuo         ###   ########.fr       */
+/*   Updated: 2019/11/08 11:22:06 by tde-phuo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft.h"
+#include "libft.h"
 
 char	*ft_strrchr(const char *s, int c)
 {

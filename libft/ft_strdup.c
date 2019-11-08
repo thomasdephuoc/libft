@@ -6,11 +6,11 @@
 /*   By: tde-phuo <tde-phuo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 17:46:52 by tde-phuo          #+#    #+#             */
-/*   Updated: 2019/11/07 14:52:01 by tde-phuo         ###   ########.fr       */
+/*   Updated: 2019/11/08 11:21:30 by tde-phuo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft.h"
+#include "libft.h"
 
 char	*ft_strdup(const char *s1)
 {

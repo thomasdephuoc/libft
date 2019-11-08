@@ -6,11 +6,11 @@
 /*   By: tde-phuo <tde-phuo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 16:11:54 by tde-phuo          #+#    #+#             */
-/*   Updated: 2019/11/07 16:42:33 by tde-phuo         ###   ########.fr       */
+/*   Updated: 2019/11/08 12:20:37 by tde-phuo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft.h"
+#include "libft.h"
 
 void	*ft_calloc(size_t count, size_t size)
 {
@@ -20,10 +20,6 @@ void	*ft_calloc(size_t count, size_t size)
 	i = 0;
 	if (!(ptr = malloc(count * size)))
 		return (NULL);
-	while (i <= count)
-	{
-		((char *)ptr)[i] = 0;
-		i++;
-	}
+	ft_bzero(ptr, count * size);
 	return (ptr);
 }

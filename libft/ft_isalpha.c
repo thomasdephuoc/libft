@@ -6,11 +6,11 @@
 /*   By: tde-phuo <tde-phuo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 15:42:28 by tde-phuo          #+#    #+#             */
-/*   Updated: 2019/11/05 09:54:59 by tde-phuo         ###   ########.fr       */
+/*   Updated: 2019/11/08 11:19:45 by tde-phuo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft.h"
+#include "libft.h"
 
 int	ft_isalpha(int c)
 {
