@@ -6,13 +6,13 @@
 /*   By: tde-phuo <tde-phuo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 14:45:46 by tde-phuo          #+#    #+#             */
-/*   Updated: 2019/11/08 16:05:07 by tde-phuo         ###   ########.fr       */
+/*   Updated: 2019/11/08 19:15:13 by tde-phuo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *s)
+size_t	trim_strlen(const char *s)
 {
 	int i;
 
@@ -22,7 +22,8 @@ size_t	ft_strlen(const char *s)
 	return (i);
 }
 
-void	*ft_memcpy(void *restrict dst, const void *restrict src, size_t n)
+/*
+void	*trim_memcpy(void *restrict dst, const void *restrict src, size_t n)
 {
 	size_t i;
 	unsigned char *ptr_1;
@@ -41,74 +42,82 @@ void	*ft_memcpy(void *restrict dst, const void *restrict src, size_t n)
 	return (dst);
 }
 
-size_t	find_charset_begin(char const *s1, char const *set)
+*/
+
+int		find_begin(char const *s1, char const *set)
 {
-	size_t i;
+	int		i;
+	size_t	j;
 
 	i = 0;
-	if ((char)s1[i] == (char)set[i])
+	j = 0;
+	while ((char)s1[i])
 	{
-		while ((char)s1[i] && (char)set[i] && (char)s1[i] == (char)set[i] && i < ft_strlen((char*)set))
-		{
-			i++;
-		}
+		while ((char)s1[i] != (char)set[j] && (char)set[j])
+			j++;
+		if ((char)s1[i] == (char)set[j])
+			j = 0;
+		if ((char)set[j] == '\0')
+			break;
+		i++;
 	}
-	if (i == ft_strlen((char*)set))
-		return (i);
-	return (0);
+	if ((char)s1[i] == '\0')
+		return (-1);
+	return (i);
 }
 
-size_t	find_charset_end(char const *s1, char const *set)
+/*
+** Returns position of the first character of the charset if charset is found
+** if looking for "yop" in "helloyop", will return 5
+*/
+
+size_t find_end(char const *s1, char const *set)
 {
 	size_t i;
 	size_t j;
 
-	i = ft_strlen((char *)s1) - 1;
-	j = ft_strlen((char *)set) - 1;
-	if ((char)s1[i] == (char)set[j])
+	i = trim_strlen((char *)s1) - 1;
+	j = 0;
+	while ((char)s1[i])
 	{
-		while ((char)s1[i] && (char)set[j] && (char)s1[i] == (char)set[j] && j > 0)
-		{
-			i--;
-			j--;
-		}
+		while ((char)s1[i] != (char)set[j] && (char)set[j])
+			j++;
+		if ((char)s1[i] == (char)set[j])
+			j = 0;
+		if ((char)set[j] == '\0')
+			break;
+		i--;
 	}
-	if (j == 0)
-		return (1);
-	return (0);
+	return (i);
 }
 
-char	*ft_strtrim(char const *s1, char const *set)
+char *ft_strtrim(char const *s1, char const *set)
 {
-	char	*ptr;
-	size_t	i;
+	int begin;
+	int end;
+	int i;
+	char *ptr;
 
-	if (s1 == NULL || set == NULL)
+	i = 0;
+	begin = find_begin(s1, set);
+	end = find_end(s1, set);
+	if (begin == -1)
+	{
+		if (!(ptr = malloc(sizeof(char) * 1)))
+			return (NULL);
+		ptr[0] = '\0';
+		return (ptr);
+	}
+	if (!(ptr = malloc(sizeof(char) * (end - begin + 1))))
+	{
 		return (NULL);
-	if (find_charset_begin(s1, set) == 1 && find_charset_end(s1, set) == 1)
-	{
-		if(!(ptr = malloc(sizeof(char) * (ft_strlen(s1) - 2 * ft_strlen(set) + 1))))
-			return (NULL);
-		ft_memcpy(ptr, s1 + find_charset_begin(s1, set), sizeof(char) * ft_strlen(s1) - 2 * ft_strlen(set) + 1);
 	}
-	else if (find_charset_begin(s1, set) == 1)
+	while (begin < end + 1)
 	{
-		if (!(ptr = malloc(sizeof(char) * (ft_strlen(s1) - 2 * ft_strlen(set) + 1))))
-			return (NULL);
-		ft_memcpy(ptr, s1 + find_charset_begin(s1, set), sizeof(char) * ft_strlen(s1) - ft_strlen(set)); // si charset at BEING : on copie vers ptr, en sautant les i premiers caractères car ce sont ceux du charset
+		ptr[i] = (char)s1[begin];
+		++i;
+		++begin;
 	}
-	else if (find_charset_end(s1, set) == 1)
-	{
-		if (!(ptr = malloc(sizeof(char) * (ft_strlen(s1) - 2 * ft_strlen(set) + 1))))
-			return (NULL);
-		ft_memcpy(ptr, s1, sizeof(char) * ft_strlen(s1) - 2 * ft_strlen(set) + 1);
-	}
-	else // si set pas trouvé renvoyer s1
-	{
-		if (!(ptr = malloc(sizeof(char) * (ft_strlen(s1)))))
-			return (NULL);
-		ft_memcpy(ptr, s1, sizeof(char) * (ft_strlen(s1)));
-	}
-	ptr[ft_strlen(ptr) - 1] = '\0'; // ajouter null-terminating character
+	ptr[i] = '\0';
 	return (ptr);
 }
