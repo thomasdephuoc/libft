@@ -23,8 +23,8 @@ SRCS		 =	ft_memset.c\
 				ft_strchr.c\
 				ft_strlen.c\
 				ft_substr.c\
-
-
+				ft_strjoin.c\
+				ft_strtrim.c\
 
 NAME		= libft.a
 
