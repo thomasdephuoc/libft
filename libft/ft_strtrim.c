@@ -1,14 +1,4 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: tde-phuo <tde-phuo@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/08 14:45:46 by tde-phuo          #+#    #+#             */
-/*   Updated: 2019/11/08 19:15:13 by tde-phuo         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+
 
 #include "libft.h"
 
@@ -41,7 +31,6 @@ void	*trim_memcpy(void *restrict dst, const void *restrict src, size_t n)
 	}
 	return (dst);
 }
-
 */
 
 int		find_begin(char const *s1, char const *set)
@@ -99,16 +88,18 @@ char *ft_strtrim(char const *s1, char const *set)
 	char *ptr;
 
 	i = 0;
+	if (!s1)
+		return (NULL);
 	begin = find_begin(s1, set);
 	end = find_end(s1, set);
 	if (begin == -1)
 	{
-		if (!(ptr = malloc(sizeof(char) * 1)))
+		if (!(ptr = (char*)malloc(sizeof(char) * 1)))
 			return (NULL);
 		ptr[0] = '\0';
 		return (ptr);
 	}
-	if (!(ptr = malloc(sizeof(char) * (end - begin + 1))))
+	if (!(ptr = (char*)malloc(sizeof(char) * (end - begin + 2))))
 	{
 		return (NULL);
 	}
