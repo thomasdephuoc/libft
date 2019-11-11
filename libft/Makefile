@@ -33,6 +33,12 @@ SRCS		 =	ft_memset.c\
 				ft_putendl_fd.c\
 				ft_putnbr_fd.c\
 
+SRCB		=	ft_lstnew.c\
+				ft_lstadd_front.c\
+				ft_lstsize.c\
+				ft_lstlast.c\
+				ft_lstadd_back.c\
+
 NAME		= libft.a
 
 OBJS		= ${SRCS:.c=.o}
@@ -45,8 +51,9 @@ CFLAGS		= -Wall -Wextra -Werror
 			cc ${CFLAGS} -c $< -o ${<:.c=.o}
 
 
-${NAME}:	${OBJS}
+$(NAME):	libft.h ${OBJS}
 			ar rc ${NAME} ${OBJS}
+			ranlib ${NAME}
 
 all:		${NAME}
 
