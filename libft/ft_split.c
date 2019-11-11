@@ -1,8 +1,18 @@
-
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tde-phuo <tde-phuo@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/11/11 13:29:12 by tde-phuo          #+#    #+#             */
+/*   Updated: 2019/11/11 15:45:05 by tde-phuo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "libft.h"
 
-int		word_count(const char *str, char c)
+int				word_count(const char *str, char c)
 {
 	int count;
 	int i;
@@ -31,7 +41,7 @@ int		word_count(const char *str, char c)
 ** Calculates its length if so and puts it in a tab
 */
 
-int		*calc_word_length(const char *str, char c)
+int				*calc_word_length(const char *str, char c)
 {
 	int i;
 	int index;
@@ -42,8 +52,8 @@ int		*calc_word_length(const char *str, char c)
 	nb_words = word_count(str, c);
 	if (nb_words == 0)
 		return (0);
-	if(!(word_length = malloc(nb_words * sizeof(int))))
-		return(NULL); // FREE MEMORY
+	if (!(word_length = malloc(nb_words * sizeof(int))))
+		return (NULL);
 	while (++i < nb_words)
 		word_length[i] = 0;
 	i = 0;
@@ -59,7 +69,7 @@ int		*calc_word_length(const char *str, char c)
 	return (word_length);
 }
 
-char	*ft_strncpy(char *dest, const char *src, unsigned int n)
+static char		*ft_strncpy(char *dest, const char *src, unsigned int n)
 {
 	unsigned int i;
 
@@ -74,10 +84,20 @@ char	*ft_strncpy(char *dest, const char *src, unsigned int n)
 		dest[i] = '\0';
 		i++;
 	}
+	dest[i] = '\0';
 	return (dest);
 }
 
-char	**ft_split(char const *s, char c)
+static char		**ft_strnull(void)
+{
+	char **s;
+
+	s = malloc(sizeof(char *));
+	s[0] = 0;
+	return (s);
+}
+
+char			**ft_split(char const *s, char c)
 {
 	int		nb_words;
 	int		i;
@@ -85,26 +105,23 @@ char	**ft_split(char const *s, char c)
 	int		*word_length;
 	char	**return_str;
 
-	if (!s)
-		return (NULL);
-	nb_words = word_count(s, c);
-	return_str = NULL;
-	word_length = calc_word_length(s, c);
-	if (!(return_str = (char**)malloc(sizeof(char *) * (nb_words + 1))))
-		return (NULL); // FREE MEMORY of return_str and word_length
 	i = -1;
 	no_char = 0;
-	while (++i < nb_words)
+	if (!s || s[0] == '\0')
+		return (ft_strnull());
+	nb_words = word_count(s, c);
+	word_length = calc_word_length(s, c);
+	if (!(return_str = (char**)malloc(sizeof(char *) * (nb_words + 1))))
+		return (NULL);
+	while (++i < nb_words && s[no_char] != '\0')
 	{
 		while (s[no_char] != '\0' && s[no_char] == c)
 			no_char++;
-		if (!(return_str[i] = (char*)malloc(sizeof(char) * (word_length[i] + 1))))
-			return (NULL); // FREE MEMORY of return_str and word_length
+		if (!(return_str[i] = malloc(sizeof(char) * (word_length[i] + 1))))
+			return (NULL);
 		ft_strncpy(return_str[i], &s[no_char], word_length[i]);
-		return_str[i][word_length[i]] = '\0';
 		no_char = no_char + word_length[i];
 	}
 	return_str[nb_words] = NULL;
-	// FREE MEMORY of word_length
 	return (return_str);
 }

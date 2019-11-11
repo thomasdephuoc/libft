@@ -1,7 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tde-phuo <tde-phuo@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/11/11 12:31:29 by tde-phuo          #+#    #+#             */
+/*   Updated: 2019/11/11 16:07:25 by tde-phuo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-
-int		nb_length(int nb)
+int			nb_length(unsigned int nb)
 {
 	int	i;
 
@@ -14,29 +25,31 @@ int		nb_length(int nb)
 	return (i);
 }
 
-char	*ft_itoa(int nb)
+static int	ft_init(char **base, int nb, unsigned int *number, int *length)
+{
+	if (nb <= 0)
+	{
+		*number = -nb;
+		*length = 1;
+	}
+	else
+	{
+		*number = nb;
+		*length = 0;
+	}
+	*length = *length + nb_length(*number);
+	*base = "0123456789";
+	return (1);
+}
+
+char		*ft_itoa(int nb)
 {
 	unsigned int	number;
 	char			*result;
 	int				length;
 	char			*base;
 
-	if (nb < 0)
-	{
-		number = - nb;
-		length = 1;
-	}
-	else
-	{
-		number = nb;
-		length = 0;
-	}
-	length = length + nb_length(number);
-	if (number == 0)
-	{
-		length = 1;
-	}
-	base = "0123456789";
+	ft_init(&base, nb, &number, &length);
 	if (!(result = malloc(sizeof(char) * (length + 1))))
 		return (NULL);
 	result[length] = '\0';

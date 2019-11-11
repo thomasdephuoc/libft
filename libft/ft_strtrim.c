@@ -1,8 +1,18 @@
-
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tde-phuo <tde-phuo@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/11/11 12:32:48 by tde-phuo          #+#    #+#             */
+/*   Updated: 2019/11/11 13:21:01 by tde-phuo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	trim_strlen(const char *s)
+size_t		trim_strlen(const char *s)
 {
 	int i;
 
@@ -13,27 +23,10 @@ size_t	trim_strlen(const char *s)
 }
 
 /*
-void	*trim_memcpy(void *restrict dst, const void *restrict src, size_t n)
-{
-	size_t i;
-	unsigned char *ptr_1;
-	unsigned char *ptr_2;
-
-	if (dst == NULL && src == NULL)
-		return (dst);
-	ptr_1 = (unsigned char *)dst;
-	ptr_2 = (unsigned char *)src;
-	i = 0;
-	while (i < n)
-	{
-		*(ptr_1 + i) = *(ptr_2 + i);
-		i++;
-	}
-	return (dst);
-}
+** Returns -1 if there are only charset in the string
 */
 
-int		find_begin(char const *s1, char const *set)
+int			find_begin(char const *s1, char const *set)
 {
 	int		i;
 	size_t	j;
@@ -47,7 +40,7 @@ int		find_begin(char const *s1, char const *set)
 		if ((char)s1[i] == (char)set[j])
 			j = 0;
 		if ((char)set[j] == '\0')
-			break;
+			break ;
 		i++;
 	}
 	if ((char)s1[i] == '\0')
@@ -60,7 +53,7 @@ int		find_begin(char const *s1, char const *set)
 ** if looking for "yop" in "helloyop", will return 5
 */
 
-size_t find_end(char const *s1, char const *set)
+size_t		find_end(char const *s1, char const *set)
 {
 	size_t i;
 	size_t j;
@@ -74,35 +67,39 @@ size_t find_end(char const *s1, char const *set)
 		if ((char)s1[i] == (char)set[j])
 			j = 0;
 		if ((char)set[j] == '\0')
-			break;
+			break ;
 		i--;
 	}
 	return (i);
 }
 
-char *ft_strtrim(char const *s1, char const *set)
+static char	*ft_strnull(void)
 {
-	int begin;
-	int end;
-	int i;
-	char *ptr;
+	char *s;
+
+	s = malloc(1);
+	s[0] = 0;
+	return (s);
+}
+
+char		*ft_strtrim(char const *s1, char const *set)
+{
+	int		begin;
+	int		end;
+	int		i;
+	char	*ptr;
 
 	i = 0;
-	if (!s1)
-		return (NULL);
+	if (s1 == 0 || set == 0)
+		return (ft_strnull());
 	begin = find_begin(s1, set);
-	end = find_end(s1, set);
 	if (begin == -1)
 	{
-		if (!(ptr = (char*)malloc(sizeof(char) * 1)))
-			return (NULL);
-		ptr[0] = '\0';
-		return (ptr);
+		return (ft_strnull());
 	}
+	end = find_end(s1, set);
 	if (!(ptr = (char*)malloc(sizeof(char) * (end - begin + 2))))
-	{
 		return (NULL);
-	}
 	while (begin < end + 1)
 	{
 		ptr[i] = (char)s1[begin];
