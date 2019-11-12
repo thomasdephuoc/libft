@@ -6,7 +6,7 @@
 /*   By: tde-phuo <tde-phuo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 16:10:52 by tde-phuo          #+#    #+#             */
-/*   Updated: 2019/11/11 16:23:43 by tde-phuo         ###   ########.fr       */
+/*   Updated: 2019/11/12 15:17:29 by tde-phuo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ char			*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	char	*s2;
 
 	if (!s || s[0] == '\0')
+		return (ft_strnull());
+	if (f == NULL)
 		return (ft_strnull());
 	i = 0;
 	length = ft_strlen(s);
